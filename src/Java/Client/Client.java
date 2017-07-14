@@ -13,13 +13,6 @@ public class Client {
         this.card = card;
     }
 
-    public CreditCard getCard() {
-        return card;
-    }
-
-    public void setCard(CreditCard card) {
-        this.card = card;
-    }
     public void takeBanknotes(Map<Integer, Integer> money){
         if(money!= null) {
             for (Map.Entry<Integer, Integer> pair : money.entrySet()) {
@@ -45,4 +38,13 @@ public class Client {
         }
         return map;
     }
+
+    public CreditCard getCard() {
+        return card;
+    }
+
+    public void setCard(CreditCard card) {
+        this.card = card;
+    }
+
 }

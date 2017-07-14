@@ -1,7 +1,5 @@
 package Java.Util;
 
-import Java.Util.ConsoleWriter;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.ServerSocket;
@@ -13,7 +11,6 @@ public class BankConnector implements Runnable{
     public void run() {
         try {
             ServerSocket ss = new ServerSocket(13);
-
             Socket socket = ss.accept();
             System.out.println("Банкомат присоединился.");
 
@@ -22,9 +19,9 @@ public class BankConnector implements Runnable{
 
             String line = null;
             while (true) {
-                line = in.readUTF();  //читаем
+                in.readInt();  //читаем
 
-                out.writeUTF(line);   //отсылаем
+                out.writeUTF("Ты такой интересный");   //отсылаем
                 out.flush();
             }
         } catch (Exception x) {

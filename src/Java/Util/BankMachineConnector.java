@@ -2,10 +2,14 @@ package Java.Util;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 
 public class BankMachineConnector implements Runnable{
+    private DataInputStream in;
+    private DataOutputStream out;
+    private String lasrResponce;
 
     @Override
     public void run() {
@@ -14,17 +18,23 @@ public class BankMachineConnector implements Runnable{
         try {
             Socket socket = new Socket(InetAddress.getByName(address), serverPort);
 
-            DataInputStream in = new DataInputStream(socket.getInputStream());
-            DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-            String line = null;
+            in = new DataInputStream(socket.getInputStream());
+            out = new DataOutputStream(socket.getOutputStream());
             while (true) {
-                line = ConsoleWriter.getString();
-                out.writeUTF(line);
-                out.flush();
-                line = in.readUTF();
+                lasrResponce = in.readUTF();
             }
         } catch (Exception x) {
             x.printStackTrace();
         }
+    }
+    public String sendRequest(int num) {
+        try {
+            out.writeInt(num);
+            out.flush();
+            return lasrResponce;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -13,27 +13,28 @@ public class BankMachine{
     private Tank tank = new Tank();
     Thread connect = new Thread(new BankConnector());
 
-
     public Map<Integer, Integer> getMoney(int amount){
         try {
-            ConsoleWriter.writeMessage("Успешно! Возьмите наличные.");
-            return tank.dispenseMoney(amount);
+            Map<Integer, Integer> cash = tank.dispenseMoney(amount);
+            ConsoleWriter.writeMessage("**Успешно! Возьмите наличные.**");
+            return cash;
         } catch (InvalidAmount e) {
-            ConsoleWriter.writeMessage("Введенная сумма некорректнаю");
+            ConsoleWriter.writeMessage(">>Введенная сумма некорректна");
         } catch (BanknoteLimitExceeded banknoteLimitExceeded) {
-            ConsoleWriter.writeMessage("Сумма слишком велика.");
+            ConsoleWriter.writeMessage(">>Сумма слишком велика.");
         }
         return null;
     }
+
     public boolean insertMoney(Map<Integer, Integer> money){
         try {
             tank.checkValid(money);
         } catch (IncorrectBanknote incorrectBanknote) {
-            ConsoleWriter.writeMessage("Купюры не действительны");
+            ConsoleWriter.writeMessage(">>Купюры не действительны");
             return false;
         }
         tank.insertMoney(money);
-        ConsoleWriter.writeMessage("Операция выполена!");
+        ConsoleWriter.writeMessage("**Операция выполена!**");
         return true;
     }
 
@@ -82,7 +83,6 @@ public class BankMachine{
                moneyToDispense.put(banknote, count);
                if(amount == 0) break;
            }
-
            return moneyToDispense;
         }
     }
