@@ -3,7 +3,6 @@ package Java;
 import Java.Exeptions.BanknoteLimitExceeded;
 import Java.Exeptions.IncorrectBanknote;
 import Java.Exeptions.InvalidAmount;
-import Java.Util.BankConnector;
 import Java.Util.ConsoleWriter;
 
 import java.util.*;
@@ -11,7 +10,6 @@ import java.util.*;
 public class BankMachine{
     private final int MAX_BANKNOTE = 40;
     private Tank tank = new Tank();
-    Thread connect = new Thread(new BankConnector());
 
     public Map<Integer, Integer> getMoney(int amount){
         try {
@@ -37,8 +35,6 @@ public class BankMachine{
         ConsoleWriter.writeMessage("**Операция выполена!**");
         return true;
     }
-
-
 
     private class Tank{
         public Map<Integer, Integer> banknotes = new HashMap<>();

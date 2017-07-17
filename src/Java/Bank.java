@@ -1,7 +1,7 @@
 package Java;
 
 
-import Java.Util.BankMachineConnector;
+import Java.Exeptions.NotEnoughCash;
 import Java.Util.DataAccess;
 
 import java.math.BigInteger;
@@ -10,23 +10,42 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 
 public class Bank  {
-    private Thread connect = new Thread(new BankMachineConnector());
     private String serial = null;
     private DataAccess dataAccess = new DataAccess();
 
+    public Bank() {
+        dataAccess.open();
+    }
 
-
-
+    public void setSerial(String serial) {
+        this.serial = serial;
+    }
     public boolean checkValid(String pin) throws SQLException {
         if(!checkExistence() || !checkPin(pin) || !checkDate()) return false;
         return true;
     }
+    public double getBalance() throws SQLException {
+        return dataAccess.getBalanceBySerial(serial);
+    }
+    public void insertBalance(Double add) throws SQLException {
+        dataAccess.addBalanceBySerial(serial, add);
+    }
+    public void withdrawalBalance(Double add) throws SQLException, NotEnoughCash {
+        dataAccess.oddBalanceBySerial(serial, add);
+    }
 
+    public double getBillCost(String bill) throws SQLException {
+        return dataAccess.getAmountOfBill(bill);
+    }
+    public void payBill(String bill, Double amount) throws NotEnoughCash, SQLException {
+        dataAccess.payBill(serial, bill, amount);
+    }
     private boolean checkExistence(){
         return dataAccess.cardExistence(serial);
     }
     private boolean checkPin(String pin) throws SQLException {
-        return hash(pin).equals(dataAccess.getPinBySerial(serial));
+        //return hash(pin).equals(dataAccess.getPinBySerial(serial));
+        return pin.equals(dataAccess.getPinBySerial(serial));
     }
     private boolean checkDate() throws SQLException {
         return dataAccess.checkDateValid(serial);
