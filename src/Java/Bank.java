@@ -1,9 +1,14 @@
 package Java;
 
 
+import Java.Connection.BankConnector;
 import Java.Exeptions.NotEnoughCash;
+import Java.Util.ConsoleWriter;
 import Java.Util.DataAccess;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -12,9 +17,26 @@ import java.sql.*;
 public class Bank  {
     private String serial = null;
     private DataAccess dataAccess = new DataAccess();
+    private BankConnector connector = new BankConnector(this);
 
     public Bank() {
-        dataAccess.open();
+        try {
+            dataAccess.open();
+            connector.start();
+        } catch (IOException e) {
+            ConsoleWriter.writeMessage(">>Ошибка при запуске банка");
+        }
+    }
+
+    public static void main(String[] args){
+        Bank bank = new Bank();
+        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
+            while (!reader.readLine().equals("exit")){}
+        }catch (Exception e){
+            ConsoleWriter.writeMessage(">>Принудительная остановка сервера");
+        }
+        bank.dataAccess.close();
+        ConsoleWriter.writeMessage("**Сервер остановлен**");
     }
 
     public void setSerial(String serial) {

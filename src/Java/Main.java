@@ -1,9 +1,14 @@
 package Java;
 
-import Java.Connection.BankMachineConnector;
+import Java.Client.Client;
+import Java.Client.CreditCard;
 
 public class Main {
     public static void main(String[] arg){
+        Client sally = new Client(new CreditCard("0123456789123"));
+        BankMachine machine = new BankMachine(sally);
+
+       /*
         BankMachineConnector machineConnector = new BankMachineConnector();
         machineConnector.start();
 
@@ -17,8 +22,7 @@ public class Main {
         System.out.println(machineConnector.payBill("12345678912345678", 400.0));
         System.out.println(machineConnector.getBillCost("12345678912345678"));
         System.out.println(machineConnector.getBalance());
-
-
+*/
 
 
         /*BankMachine bankMachine = new BankMachine();

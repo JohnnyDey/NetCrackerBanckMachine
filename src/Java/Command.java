@@ -5,4 +5,5 @@ public enum Command {
     INCERT,
     WITHDRAWAL,
     PAY,
+    EXIT
 }
