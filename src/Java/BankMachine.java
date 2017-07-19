@@ -16,15 +16,31 @@ public class BankMachine{
     private Client client;
     private BankMachineConnector connector = new BankMachineConnector();
 
+
     public BankMachine(Client client) {
         this.client = client;
-
-        ConsoleWriter.writeMessage(" ----------------------");
-        ConsoleWriter.writeMessage("|  Добро пожаловать!  |");
-        ConsoleWriter.writeMessage(" ----------------------");
-        menu();
+        greetings();
     }
 
+    //
+    //  приветствие
+    //
+    private void greetings(){
+        connector.start();
+        if(validate()) {
+            ConsoleWriter.writeMessage(" ----------------------");
+            ConsoleWriter.writeMessage("|  Добро пожаловать!  |");
+            ConsoleWriter.writeMessage(" ----------------------");
+            menu();
+        }else {
+            ConsoleWriter.writeMessage("Не верный PIN-код.");
+            connector.close();
+        }
+    }
+
+    //
+    //  меню
+    //
     private void menu(){
         Integer integer = 0;
         while (integer != Command.EXIT.ordinal()){
@@ -39,7 +55,8 @@ public class BankMachine{
             }
 
             if(integer == Command.BALANCE.ordinal()){
-
+                double balance = getBalance();
+                ConsoleWriter.writeMessage(String.valueOf(balance));
             }
             else if(integer == Command.INCERT.ordinal()){
                 boolean success = insertMoney(client.getBanknotes());
@@ -67,7 +84,29 @@ public class BankMachine{
         ConsoleWriter.writeMessage("*** До свидания! ***");
     }
 
-    public Map<Integer, Integer> getMoney(int amount){
+
+    //
+    // валидация
+    //
+    private boolean validate(){
+        ConsoleWriter.writeMessage("Введите PIN-код");
+        String pin = null;
+        try {
+            pin = ConsoleWriter.getString();
+        } catch (IOException e) {
+            ConsoleWriter.writeMessage(">>Ошибка ввода");
+        }
+        return connector.checkPin(client.getCard().getNumber(), pin);
+    }
+
+    //
+    // доступные операции
+    //
+    private double getBalance(){
+        return connector.getBalance();
+    }
+
+    private Map<Integer, Integer> getMoney(int amount){
         try {
             boolean success = connector.withdrawalBalance((double) amount);
             if(!success){
@@ -84,8 +123,8 @@ public class BankMachine{
         return null;
     }
 
-    public boolean insertMoney(Map<Integer, Integer> money){
-        if(money != null || money.size() == 0) return false;
+    protected boolean insertMoney(Map<Integer, Integer> money){
+        if(money == null || money.size() == 0) return false;
         try {
             tank.checkValid(money);
         } catch (IncorrectBanknote incorrectBanknote) {
@@ -100,6 +139,9 @@ public class BankMachine{
         return connector.insertBalance(count);
     }
 
+    //
+    //  хранилище купюр
+    //
     private class Tank{
         public Map<Integer, Integer> banknotes = new HashMap<>();
         private List<Integer> available = new ArrayList<>();

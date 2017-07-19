@@ -25,10 +25,11 @@ public class Client {
         Map<Integer, Integer> map = new HashMap<>();
         while(true){
             try {
-                System.out.print("Купюра: ");
+                ConsoleWriter.writeMessage("'exit' подтверждения операции");
+                ConsoleWriter.writeMessage("Купюра: ");
                 String s1 = ConsoleWriter.getString();
                 if(s1.toLowerCase().equals("exit")) break;
-                System.out.print("Количество: ");
+                ConsoleWriter.writeMessage("Количество: ");
                 String s2 = ConsoleWriter.getString();
                 if(s2.toLowerCase().equals("exit")) break;
                 map.put(Integer.parseInt(s1), Integer.parseInt(s2));

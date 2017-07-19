@@ -10,9 +10,14 @@ public class BankMachineConnector extends Thread{
     private Message message = null;
     private Message response = null;
 
+
+    //
+    //  запрос данных и обработка ответа
+    //
     public boolean checkPin(String serial, String pin){
         newSerialMessage(serial);
         waitForResponse();
+        response = null;
         newPinMessage(pin);
         waitForResponse();
         boolean status =  (boolean) response.getData();
@@ -59,6 +64,10 @@ public class BankMachineConnector extends Thread{
         message.setAdditional(amount);
         this.message = message;
     }
+
+    //
+    //  формирование сообщения
+    //
     private void newSerialMessage(String serial){
         this.message = new Message(MessageType.SERIAL, serial);
     }
@@ -78,6 +87,9 @@ public class BankMachineConnector extends Thread{
         this.message = new Message(MessageType.BILL_COST, bill);
     }
 
+    //
+    //  обмен сообщениями
+    //
     private void waitForResponse(){
         while (response == null){
             try {
@@ -98,6 +110,9 @@ public class BankMachineConnector extends Thread{
         }
     }
 
+    //
+    //  запуск коннектора
+    //
     public void run() {
         SocketThread socketThread = new SocketThread();
         socketThread.setDaemon(true);
@@ -111,14 +126,16 @@ public class BankMachineConnector extends Thread{
             ConsoleWriter.writeMessage("Error!");
             return;
         }
-        if (clientConnected) ConsoleWriter.writeMessage("Соединение установлено. Для выхода наберите команду 'exit'.");
-        else ConsoleWriter.writeMessage("Произошла ошибка во время работы клиента.");
         while (clientConnected){
             if(message != null){
                 sendMessage();
             }
         }
     }
+    public void close(){
+        clientConnected = false;
+    }
+
 
     public class SocketThread extends Thread{
         protected void processIncomingMessage(String message){

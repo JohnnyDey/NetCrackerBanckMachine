@@ -8,6 +8,7 @@ public class Main {
         Client sally = new Client(new CreditCard("0123456789123"));
         BankMachine machine = new BankMachine(sally);
 
+
        /*
         BankMachineConnector machineConnector = new BankMachineConnector();
         machineConnector.start();

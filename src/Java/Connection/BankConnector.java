@@ -100,6 +100,7 @@ public class BankConnector {
                 ConsoleWriter.writeMessage(">>Произошла ошибка при обмене данными с удаленным адресом: " + address);
             }
             catch (SQLException e){
+                e.printStackTrace();
                 ConsoleWriter.writeMessage(">>Ошибка при обращении к базе данных");
             } catch (NotEnoughCash notEnoughCash) {
                 ConsoleWriter.writeMessage(">>Не достаточно средств на счете");

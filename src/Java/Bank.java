@@ -19,15 +19,6 @@ public class Bank  {
     private DataAccess dataAccess = new DataAccess();
     private BankConnector connector = new BankConnector(this);
 
-    public Bank() {
-        try {
-            dataAccess.open();
-            connector.start();
-        } catch (IOException e) {
-            ConsoleWriter.writeMessage(">>Ошибка при запуске банка");
-        }
-    }
-
     public static void main(String[] args){
         Bank bank = new Bank();
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
@@ -39,9 +30,22 @@ public class Bank  {
         ConsoleWriter.writeMessage("**Сервер остановлен**");
     }
 
+    public Bank() {
+        try {
+            dataAccess.open();
+            connector.start();
+        } catch (IOException e) {
+            ConsoleWriter.writeMessage(">>Ошибка при запуске банка");
+        }
+    }
+
     public void setSerial(String serial) {
         this.serial = serial;
     }
+
+    //
+    //  запросы в базу
+    //
     public boolean checkValid(String pin) throws SQLException {
         if(!checkExistence() || !checkPin(pin) || !checkDate()) return false;
         return true;
@@ -62,6 +66,7 @@ public class Bank  {
     public void payBill(String bill, Double amount) throws NotEnoughCash, SQLException {
         dataAccess.payBill(serial, bill, amount);
     }
+
     private boolean checkExistence(){
         return dataAccess.cardExistence(serial);
     }
@@ -73,6 +78,9 @@ public class Bank  {
         return dataAccess.checkDateValid(serial);
     }
 
+    //
+    //  шифрование
+    //
     public String hash(String st) {
         MessageDigest messageDigest = null;
         byte[] digest = new byte[0];
