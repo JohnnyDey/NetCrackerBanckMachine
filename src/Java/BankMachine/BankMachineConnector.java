@@ -1,6 +1,9 @@
-package Java.Connection;
+package Java.BankMachine;
 
-import Java.Util.ConsoleWriter;
+import Java.Connection.Connection;
+import Java.Connection.Message;
+import Java.Connection.MessageType;
+import Java.ConsoleWriter;
 import java.io.IOException;
 import java.net.Socket;
 
@@ -9,55 +12,52 @@ public class BankMachineConnector extends Thread{
     private volatile boolean clientConnected = false;
     private Message message = null;
     private Message response = null;
+    private boolean unread = false;
 
 
     //
-    //  запрос данных и обработка ответа
+    //  запрос данных от сервера
     //
     public boolean checkPin(String serial, String pin){
         newSerialMessage(serial);
         waitForResponse();
-        response = null;
+        unread = false;
         newPinMessage(pin);
         waitForResponse();
-        boolean status =  (boolean) response.getData();
-        response = null;
-        return status;
+        return (boolean) response.getData();
     }
     public double getBalance(){
         newBalanceMessage();
         waitForResponse();
-        double balance =  (double) response.getData();
-        response = null;
-        return balance;
+        try {
+            return (double) response.getData();
+        }catch (ClassCastException e){
+            return -1;
+        }
     }
     public boolean insertBalance(Double add){
         newAddBalanceMessage(add);
         waitForResponse();
-        boolean status =  (boolean) response.getData();
-        response = null;
-        return status;
+        return (boolean) response.getData();
     }
     public boolean withdrawalBalance(Double add){
         newOddBalanceMessage(add);
         waitForResponse();
-        boolean status =  (boolean) response.getData();
-        response = null;
-        return status;
+        return (boolean) response.getData();
     }
     public boolean payBill(String bill, Double amount){
         newPayBillMessage(bill, amount);
         waitForResponse();
-        boolean status =  (boolean) response.getData();
-        response = null;
-        return status;
+        return (boolean) response.getData();
     }
     public double getBillCost(String bill){
         newBillCostMessage(bill);
         waitForResponse();
-        double status =  (double) response.getData();
-        response = null;
-        return status;
+        try {
+            return (double) response.getData();
+        }catch (ClassCastException e){
+            return 0;
+        }
     }
     private void newPayBillMessage(String bill, Double amount){
         Message message = new Message(MessageType.PAYMENT, bill);
@@ -91,13 +91,14 @@ public class BankMachineConnector extends Thread{
     //  обмен сообщениями
     //
     private void waitForResponse(){
-        while (response == null){
+        while (!unread){
             try {
-                Thread.sleep(500);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+        unread = false;
     }
     private void sendMessage(){
         try{
@@ -105,7 +106,7 @@ public class BankMachineConnector extends Thread{
             message = null;
         }catch (IOException e){
             e.printStackTrace();
-            ConsoleWriter.writeMessage("Disconnected!");
+            ConsoleWriter.writeMessage("Отсоединен!");
             clientConnected = false;
         }
     }
@@ -123,7 +124,7 @@ public class BankMachineConnector extends Thread{
             }
         }
         catch (InterruptedException e){
-            ConsoleWriter.writeMessage("Error!");
+            ConsoleWriter.writeMessage("Соединение прервано!");
             return;
         }
         while (clientConnected){
@@ -138,9 +139,6 @@ public class BankMachineConnector extends Thread{
 
 
     public class SocketThread extends Thread{
-        protected void processIncomingMessage(String message){
-            ConsoleWriter.writeMessage("NEW MESSAGE: " + message);
-        }
 
         protected void notifyConnectionStatusChanged(boolean clientConnected){
             BankMachineConnector.this.clientConnected = clientConnected;
@@ -151,12 +149,13 @@ public class BankMachineConnector extends Thread{
         protected void clientMainLoop() throws IOException, ClassNotFoundException{
             while (true) {
                 response = connection.receive();
+                unread = true;
             }
         }
         @Override
         public void run(){
             try {
-                Socket socket = new Socket("127.0.0.1", 13);
+                Socket socket = new Socket("127.0.0.1", 1025);
                 connection = new Connection(socket);
                 notifyConnectionStatusChanged(true);
                 clientMainLoop();

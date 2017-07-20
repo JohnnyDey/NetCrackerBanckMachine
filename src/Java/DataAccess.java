@@ -1,4 +1,4 @@
-package Java.Util;
+package Java;
 
 import Java.Exeptions.NotEnoughCash;
 
@@ -19,33 +19,31 @@ public class DataAccess {
     //формирование SQL-запроса
     //
     public String getPinBySerial(String serial) throws SQLException {
-        String query = "SELECT pin FROM bank.cards WHERE id=" + serial;
-        return exeQuery(query);
+        return exeQuery("SELECT pin FROM bank.cards WHERE id=" + serial);
     }
 
     public Double getBalanceBySerial(String serial) throws SQLException {
-        String query = "SELECT balance FROM bank.cards, bank.accounts WHERE cards.id=" +
-                serial + " AND accountId = accounts.id";
-        return Double.parseDouble(exeQuery(query));
+        return Double.parseDouble(exeQuery("SELECT balance FROM bank.cards, bank.accounts WHERE cards.id=" +
+                                            serial + " AND accountId = accounts.id"));
     }
 
     public void addBalanceBySerial(String serial, double add) throws SQLException {
         double balance = round(getBalanceBySerial(serial) + add);
-        String query = "UPDATE bank.accounts, bank.cards SET accounts.balance=" + balance +
-                " WHERE accounts.id=cards.accountId AND cards.id=" + serial;
-        stmt.execute(query);
+        stmt.execute("UPDATE bank.accounts, bank.cards SET accounts.balance=" + balance +
+                        " WHERE accounts.id=cards.accountId AND cards.id=" + serial);
     }
 
     public void oddBalanceBySerial(String serial, double odd) throws SQLException, NotEnoughCash {
         double balance = round(getBalanceBySerial(serial) - odd);
         if(balance < 0.00) throw new NotEnoughCash();
-        String query = "UPDATE bank.accounts, bank.cards SET accounts.balance=" + balance +
-                " WHERE accounts.id=cards.accountId AND cards.id=" + serial;
-        stmt.execute(query);
+
+        stmt.execute("UPDATE bank.accounts, bank.cards SET accounts.balance=" + balance +
+                        " WHERE accounts.id=cards.accountId AND cards.id=" + serial);
     }
 
     public void payBill(String serial, String bill, double amount) throws SQLException, NotEnoughCash {
-        Double billAmount = getAmountOfBill(bill);
+        double billAmount = getAmountOfBill(bill);
+
         addBalanceByAccountId(getAccountIdByBill(bill), amount);
         if(billAmount == amount)
             payFullBull(serial, bill, amount);
@@ -53,23 +51,20 @@ public class DataAccess {
             payPartBull(serial, bill, amount, billAmount-amount);
     }
 
-    public Double getAmountOfBill(String bill) throws SQLException {
-        String query = "SELECT amount FROM bank.bill WHERE bill.id=" + bill;
-        return Double.parseDouble(exeQuery(query));
+    public double getAmountOfBill(String bill) throws SQLException {
+        return Double.parseDouble(exeQuery("SELECT amount FROM bank.bill WHERE bill.id=" + bill));
     }
 
     public boolean checkDateValid(String serial) throws SQLException {
-        String query = "SELECT validUntil FROM bank.cards WHERE cards.id=" + serial;
-        rs = stmt.executeQuery(query);
+        rs = stmt.executeQuery("SELECT validUntil FROM bank.cards WHERE cards.id=" + serial);
         rs.next();
         Date date = rs.getDate(1);
         return date.after(Calendar.getInstance().getTime()) ? true : false;
     }
 
     public boolean cardExistence(String serial){
-        String query = "SELECT * FROM bank.cards WHERE id=" + serial;
         try {
-            stmt.executeQuery(query);
+            stmt.executeQuery("SELECT * FROM bank.cards WHERE id=" + serial);
         } catch (SQLException e) {
             return false;
         }
@@ -78,19 +73,16 @@ public class DataAccess {
 
     private void addBalanceByAccountId(String id, double add) throws SQLException {
         double balance = round(getBalanceByAccountId(id) + add);
-        String query = "UPDATE bank.accounts SET accounts.balance=" + balance +
-                " WHERE accounts.id=" + id;
-        stmt.execute(query);
+
+        stmt.execute("UPDATE bank.accounts SET accounts.balance=" + balance + " WHERE accounts.id=" + id);
     }
 
     private Double getBalanceByAccountId(String id) throws SQLException {
-        String query = "SELECT balance FROM bank.accounts WHERE id=" + id;
-        return Double.parseDouble(exeQuery(query));
+        return Double.parseDouble(exeQuery("SELECT balance FROM bank.accounts WHERE id=" + id));
     }
 
     private String getAccountIdByBill(String bill) throws SQLException {
-        String query = "SELECT accountId FROM bank.bill WHERE id=" + bill;
-        return exeQuery(query);
+        return exeQuery("SELECT accountId FROM bank.bill WHERE id=" + bill);
     }
 
     private void payFullBull(String serial, String bill, double amount) throws SQLException, NotEnoughCash {
@@ -113,7 +105,7 @@ public class DataAccess {
 
 
     //
-    //  округление до формата 0.00
+    //  округление до двух чисел после запятой
     //
     private static double round(double value) {
         long factor = (long) Math.pow(10, 2);

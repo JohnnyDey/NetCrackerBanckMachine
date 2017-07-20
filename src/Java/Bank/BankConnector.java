@@ -1,8 +1,10 @@
-package Java.Connection;
+package Java.Bank;
 
-import Java.Bank;
+import Java.Connection.Connection;
+import Java.Connection.Message;
+import Java.Connection.MessageType;
 import Java.Exeptions.NotEnoughCash;
-import Java.Util.ConsoleWriter;
+import Java.ConsoleWriter;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -19,7 +21,7 @@ public class BankConnector {
     }
 
     public void start() throws IOException {
-        try (ServerSocket ss = new ServerSocket(13)) {
+        try (ServerSocket ss = new ServerSocket(1025)) {
             ConsoleWriter.writeMessage("**Сервер запущен.**");
             while (true) {
                 Socket socket = ss.accept();
@@ -28,6 +30,7 @@ public class BankConnector {
                 handler.start();
             }
         } catch (Exception e) {
+            e.printStackTrace();
             ConsoleWriter.writeMessage(">>Ошибка запуска сервера!");
         }
     }
@@ -48,7 +51,7 @@ public class BankConnector {
             this.socket = socket;
         }
 
-        private void serverMainLoop(Connection connection) throws IOException, ClassNotFoundException, SQLException, NotEnoughCash {
+        private void serverMainLoop(Connection connection) throws IOException, ClassNotFoundException, NotEnoughCash {
             while (true) {
                 Message message = connection.receive();
                 System.out.println(message.getType());
@@ -58,28 +61,52 @@ public class BankConnector {
                         sendMessage(new Message(MessageType.STATUS, true));
                         break;
                     case PIN:
-                        boolean status = bank.checkValid(String.valueOf(message.getData()));
-                        sendMessage(new Message(MessageType.STATUS, status));
+                        try {
+                            boolean status = bank.checkValid(String.valueOf(message.getData()));
+                            sendMessage(new Message(MessageType.STATUS, status));
+                        } catch (SQLException e) {
+                            sendMessage(new Message(MessageType.STATUS, false));
+                        }
                         break;
                     case BALANCE_INFO:
-                        double balance = bank.getBalance();
-                        sendMessage(new Message(MessageType.BALANCE_INFO, balance));
+                        try {
+                            double balance = bank.getBalance();
+                            sendMessage(new Message(MessageType.BALANCE_INFO, balance));
+                        } catch (SQLException e) {
+                            sendMessage(new Message(MessageType.BALANCE_INFO, false));
+                        }
                         break;
                     case BALANCE_INSERT:
-                        bank.insertBalance((Double)message.getData());
-                        sendMessage(new Message(MessageType.STATUS, true));
+                        try {
+                            bank.insertBalance((Double)message.getData());
+                            sendMessage(new Message(MessageType.STATUS, true));
+                        } catch (SQLException e) {
+                            sendMessage(new Message(MessageType.STATUS, false));
+                        }
                         break;
                     case BALANCE_WITHDRAWAL:
-                        bank.withdrawalBalance((Double) message.getData());
-                        sendMessage(new Message(MessageType.STATUS, true));
+                        try {
+                            bank.withdrawalBalance((Double) message.getData());
+                            sendMessage(new Message(MessageType.STATUS, true));
+                        } catch (SQLException e) {
+                            sendMessage(new Message(MessageType.STATUS, false));
+                        }
                         break;
                     case PAYMENT:
-                        bank.payBill((String)message.getData(), (double)message.getAdditional());
-                        sendMessage(new Message(MessageType.STATUS, true));
+                        try {
+                            bank.payBill((String)message.getData(), (double)message.getAdditional());
+                            sendMessage(new Message(MessageType.STATUS, true));
+                        } catch (SQLException e) {
+                            sendMessage(new Message(MessageType.STATUS, false));
+                        }
                         break;
                     case BILL_COST:
-                        double cost = bank.getBillCost((String) message.getData());
-                        sendMessage(new Message(MessageType.STATUS, cost));
+                        try {
+                            double cost = bank.getBillCost((String) message.getData());
+                            sendMessage(new Message(MessageType.STATUS, cost));
+                        } catch (SQLException e) {
+                            sendMessage(new Message(MessageType.STATUS, false));
+                        }
                         break;
                     default:
                         ConsoleWriter.writeMessage(">>Ошибка обмена данными");
@@ -99,10 +126,7 @@ public class BankConnector {
             catch (IOException | ClassNotFoundException e) {
                 ConsoleWriter.writeMessage(">>Произошла ошибка при обмене данными с удаленным адресом: " + address);
             }
-            catch (SQLException e){
-                e.printStackTrace();
-                ConsoleWriter.writeMessage(">>Ошибка при обращении к базе данных");
-            } catch (NotEnoughCash notEnoughCash) {
+            catch (NotEnoughCash notEnoughCash) {
                 ConsoleWriter.writeMessage(">>Не достаточно средств на счете");
             }
             ConsoleWriter.writeMessage("Закрыто соединение с удаленным адресом: " + address);

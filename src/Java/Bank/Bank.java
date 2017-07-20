@@ -1,10 +1,9 @@
-package Java;
+package Java.Bank;
 
 
-import Java.Connection.BankConnector;
 import Java.Exeptions.NotEnoughCash;
-import Java.Util.ConsoleWriter;
-import Java.Util.DataAccess;
+import Java.ConsoleWriter;
+import Java.DataAccess;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -71,17 +70,16 @@ public class Bank  {
         return dataAccess.cardExistence(serial);
     }
     private boolean checkPin(String pin) throws SQLException {
-        //return hash(pin).equals(dataAccess.getPinBySerial(serial));
-        return pin.equals(dataAccess.getPinBySerial(serial));
+        return hash(pin).equals(dataAccess.getPinBySerial(serial));
     }
     private boolean checkDate() throws SQLException {
         return dataAccess.checkDateValid(serial);
     }
 
-    //
     //  шифрование
+    //  статик для того, чтобы можно было использовать ф-цию в тестировании
     //
-    public String hash(String st) {
+    public static String hash(String st) {
         MessageDigest messageDigest = null;
         byte[] digest = new byte[0];
 
