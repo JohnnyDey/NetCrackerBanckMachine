@@ -15,7 +15,7 @@ public class ConsoleWriter {
         while (true){
             String string = reader.readLine();
             if(string == null || string.equals("")) {
-                writeMessage("пустые строки недопустимы. Попробуйте еще раз.");
+                writeMessage("Пустые строки недопустимы. Попробуйте еще раз.");
                 continue;
             }
             return string;
@@ -26,7 +26,7 @@ public class ConsoleWriter {
             try {
                 return Integer.parseInt(reader.readLine());
             } catch (NumberFormatException e) {
-                writeMessage("Не верный формат данных. Попробуйте еще раз");
+                writeMessage("Неверный формат данных. Попробуйте еще раз.");
             }
         }
     }

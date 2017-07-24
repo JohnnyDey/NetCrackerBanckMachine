@@ -1,11 +1,11 @@
-package Java;
+package Java.Bank;
 
 import Java.Exeptions.NotEnoughCash;
 
 import java.sql.*;
 import java.util.Calendar;
 
-public class DataAccess {
+class DataAccess {
     private static final String url = "jdbc:mysql://localhost:3306?autoReconnect=true&useSSL=false";
     private static final String user = "root";
     private static final String password = "root";
@@ -35,6 +35,7 @@ public class DataAccess {
 
     public void oddBalanceBySerial(String serial, double odd) throws SQLException, NotEnoughCash {
         double balance = round(getBalanceBySerial(serial) - odd);
+        System.out.println(balance);
         if(balance < 0.00) throw new NotEnoughCash();
 
         stmt.execute("UPDATE bank.accounts, bank.cards SET accounts.balance=" + balance +

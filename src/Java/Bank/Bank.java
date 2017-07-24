@@ -1,13 +1,14 @@
 package Java.Bank;
+/*
 
+Банк! Без его запуска банкомат услуги не предоставляет
+
+*/
 
 import Java.Exeptions.NotEnoughCash;
 import Java.ConsoleWriter;
-import Java.DataAccess;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -19,14 +20,7 @@ public class Bank  {
     private BankConnector connector = new BankConnector(this);
 
     public static void main(String[] args){
-        Bank bank = new Bank();
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
-            while (!reader.readLine().equals("exit")){}
-        }catch (Exception e){
-            ConsoleWriter.writeMessage(">>Принудительная остановка сервера");
-        }
-        bank.dataAccess.close();
-        ConsoleWriter.writeMessage("**Сервер остановлен**");
+        new Bank();
     }
 
     public Bank() {
@@ -34,7 +28,7 @@ public class Bank  {
             dataAccess.open();
             connector.start();
         } catch (IOException e) {
-            ConsoleWriter.writeMessage(">>Ошибка при запуске банка");
+            ConsoleWriter.writeMessage(">>Ошибка во время запуска банка");
         }
     }
 
@@ -75,9 +69,13 @@ public class Bank  {
     private boolean checkDate() throws SQLException {
         return dataAccess.checkDateValid(serial);
     }
+    private void close() throws IOException {
+        dataAccess.close();
+        connector.clos();
+    }
 
+    //
     //  шифрование
-    //  статик для того, чтобы можно было использовать ф-цию в тестировании
     //
     public static String hash(String st) {
         MessageDigest messageDigest = null;

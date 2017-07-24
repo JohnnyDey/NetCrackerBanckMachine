@@ -4,6 +4,8 @@ import Java.Connection.Connection;
 import Java.Connection.Message;
 import Java.Connection.MessageType;
 import Java.ConsoleWriter;
+import Java.Exeptions.ServerNotAvailable;
+
 import java.io.IOException;
 import java.net.Socket;
 
@@ -18,7 +20,7 @@ public class BankMachineConnector extends Thread{
     //
     //  запрос данных от сервера
     //
-    public boolean checkPin(String serial, String pin){
+    public boolean checkPin(String serial, String pin) throws ServerNotAvailable {
         newSerialMessage(serial);
         waitForResponse();
         unread = false;
@@ -26,7 +28,7 @@ public class BankMachineConnector extends Thread{
         waitForResponse();
         return (boolean) response.getData();
     }
-    public double getBalance(){
+    public double getBalance() throws ServerNotAvailable {
         newBalanceMessage();
         waitForResponse();
         try {
@@ -35,22 +37,22 @@ public class BankMachineConnector extends Thread{
             return -1;
         }
     }
-    public boolean insertBalance(Double add){
+    public boolean insertBalance(Double add) throws ServerNotAvailable {
         newAddBalanceMessage(add);
         waitForResponse();
         return (boolean) response.getData();
     }
-    public boolean withdrawalBalance(Double add){
+    public boolean withdrawalBalance(Double add) throws ServerNotAvailable {
         newOddBalanceMessage(add);
         waitForResponse();
         return (boolean) response.getData();
     }
-    public boolean payBill(String bill, Double amount){
+    public boolean payBill(String bill, Double amount) throws ServerNotAvailable {
         newPayBillMessage(bill, amount);
         waitForResponse();
         return (boolean) response.getData();
     }
-    public double getBillCost(String bill){
+    public double getBillCost(String bill) throws ServerNotAvailable {
         newBillCostMessage(bill);
         waitForResponse();
         try {
@@ -90,8 +92,9 @@ public class BankMachineConnector extends Thread{
     //
     //  обмен сообщениями
     //
-    private void waitForResponse(){
+    private void waitForResponse() throws ServerNotAvailable {
         while (!unread){
+            if(!clientConnected) throw new ServerNotAvailable();
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
@@ -105,8 +108,7 @@ public class BankMachineConnector extends Thread{
             connection.send(message);
             message = null;
         }catch (IOException e){
-            e.printStackTrace();
-            ConsoleWriter.writeMessage("Отсоединен!");
+            ConsoleWriter.writeMessage(">>Отсоединен!");
             clientConnected = false;
         }
     }
@@ -124,7 +126,7 @@ public class BankMachineConnector extends Thread{
             }
         }
         catch (InterruptedException e){
-            ConsoleWriter.writeMessage("Соединение прервано!");
+            ConsoleWriter.writeMessage(">>Соединение прервано!");
             return;
         }
         while (clientConnected){

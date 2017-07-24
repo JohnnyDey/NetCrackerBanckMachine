@@ -15,21 +15,31 @@ public class BankMachine{
 
     public BankMachine(Client client) {
         this.client = client;
-        greetings();
+        try {
+            greetings();
+        } catch (ServerNotAvailable serverNotAvailable) {
+            ConsoleWriter.writeMessage("Сервер недоступен :( Попробуйте позже.");
+        }
     }
 
     //
     //  приветствие
     //
-    private void greetings(){
+    private void greetings() throws ServerNotAvailable {
         connector.start();
-        if(validate()) {
-            ConsoleWriter.writeMessage(" ----------------------");
-            ConsoleWriter.writeMessage("|  Добро пожаловать!  |");
-            ConsoleWriter.writeMessage(" ----------------------");
-            menu();
-        }else {
-            ConsoleWriter.writeMessage("Не верный PIN-код.");
+        try {
+            if(validate()) {
+                ConsoleWriter.writeMessage(" ----------------------");
+                ConsoleWriter.writeMessage("|  Добро пожаловать!  |");
+                ConsoleWriter.writeMessage(" ----------------------");
+
+                    menu();
+
+            }else {
+                ConsoleWriter.writeMessage("Не верный PIN или карта не действительна.");
+            }
+        }catch (IOException e){
+            ConsoleWriter.writeMessage("Ошибка консоли D:");
         }
         connector.close();
     }
@@ -37,70 +47,67 @@ public class BankMachine{
     //
     //  меню
     //
-    private void menu(){
+    private void menu() throws IOException {
         Integer integer = 0;
-        while (integer != Command.EXIT.ordinal()){
-            ConsoleWriter.writeMessage("******************");
-            ConsoleWriter.writeMessage("Выберете операцию:");
-            for(Command c : Command.values()){
-                ConsoleWriter.writeMessage(c.ordinal() + 1 +  ". " + c.getName());
-            }
-            try {
+        try {
+            while (integer != Command.EXIT.ordinal()) {
+                ConsoleWriter.writeMessage("******************");
+                ConsoleWriter.writeMessage("Выберете операцию:");
+                for (Command c : Command.values()) {
+                    ConsoleWriter.writeMessage(c.ordinal() + 1 + ". " + c.getName());
+                }
                 integer = ConsoleWriter.getInt() - 1;
-            } catch (IOException e) {
-                ConsoleWriter.writeMessage(">>Ошибка ввода команды");
-            }
 
-            if(integer == Command.BALANCE.ordinal()){
-                double balance = getBalance();
-                if(balance >= 0) {
-                    ConsoleWriter.writeMessage("******************");
-                    ConsoleWriter.writeMessage("");
-                    ConsoleWriter.writeMessage("Ваш баланс составляет: " + String.valueOf(balance) + " рублей.");
-                }else
-                    ConsoleWriter.writeMessage("Ваш лицевой счет не существует. Обратитесь в банк.");
-            }
-            else if(integer == Command.INSERT.ordinal()){
-                boolean success = insertMoney(client.getBanknotes());
-                if(!success) ConsoleWriter.writeMessage(">>Операция не выполнена");
-                else {
-                    ConsoleWriter.writeMessage("******************");
-                    ConsoleWriter.writeMessage("");
-                    ConsoleWriter.writeMessage("Баланс пополнен!");
-                }
-            }
-            else if(integer == Command.WITHDRAWAL.ordinal()){
-                ConsoleWriter.writeMessage("Введите сумму. Минимальная сумма: 100.");
-                Map<Integer, Integer> money = null;
-                try {
-                     money = getMoney(ConsoleWriter.getInt());
-                     if(money != null){
-                         ConsoleWriter.writeMessage("******************");
-                         ConsoleWriter.writeMessage("");
-                         ConsoleWriter.writeMessage("Успешно! Возьмите наличные.");
-                         client.takeBanknotes(money);
-                     }
-                } catch (IOException e) {
-                    ConsoleWriter.writeMessage("Сумма некоректна");
-                }
 
+
+                if (integer == Command.BALANCE.ordinal()) {
+                    double balance = getBalance();
+                    if (balance >= 0) {
+                        ConsoleWriter.writeMessage("******************");
+                        ConsoleWriter.writeMessage("");
+                        ConsoleWriter.writeMessage("Ваш баланс составляет: " + String.valueOf(balance) + " рублей.");
+                    } else
+                        ConsoleWriter.writeMessage("Ваш лицевой счет не существует. Обратитесь в банк.");
+                } else if (integer == Command.INSERT.ordinal()) {
+                    boolean success = insertMoney(client.getBanknotes());
+                    if (!success) ConsoleWriter.writeMessage(">>Операция не выполнена");
+                    else {
+                        ConsoleWriter.writeMessage("******************");
+                        ConsoleWriter.writeMessage("");
+                        ConsoleWriter.writeMessage("Баланс пополнен!");
+                    }
+                } else if (integer == Command.WITHDRAWAL.ordinal()) {
+                    ConsoleWriter.writeMessage("Введите сумму. Минимальная сумма: 100.");
+                    Map<Integer, Integer> money = null;
+                    money = getMoney(ConsoleWriter.getInt());
+                    if (money != null) {
+                        ConsoleWriter.writeMessage("******************");
+                        ConsoleWriter.writeMessage("");
+                        ConsoleWriter.writeMessage("Успешно! Возьмите наличные.");
+                        client.takeBanknotes(money);
+                    }
+                } else if (integer == Command.PAY.ordinal()) {
+                    ConsoleWriter.writeMessage("Введите номер счета");
+                    try {
+                        boolean status = pay(ConsoleWriter.getString());
+                        if(!status){
+                            ConsoleWriter.writeMessage("Операция не выполнена.");
+                        } else {
+                            ConsoleWriter.writeMessage("******************");
+                            ConsoleWriter.writeMessage("");
+                            ConsoleWriter.writeMessage("Операция выполнена успешно!");
+                        }
+                    } catch (NumberDoesNotExist numberDoesNotExist) {
+                        ConsoleWriter.writeMessage(">>Номер счета не существует");
+                    }
+                } else if (integer == Command.EXIT.ordinal()) {
+                    ConsoleWriter.writeMessage("Всего доброго :)");
+                } else
+                    ConsoleWriter.writeMessage(">>Выбрана некорректная команда");
+                ConsoleWriter.writeMessage("");
             }
-            else if(integer == Command.PAY.ordinal()){
-                ConsoleWriter.writeMessage("Введите номер счета");
-                try {
-                    boolean status = pay(ConsoleWriter.getString());
-                } catch (IOException e) {
-                    ConsoleWriter.writeMessage("Ошибка ввода данных");
-                } catch (NumberDoesNotExist numberDoesNotExist) {
-                    ConsoleWriter.writeMessage(">>Номер счета не существует");
-                }
-            }
-            else if(integer == Command.EXIT.ordinal()){
-                ConsoleWriter.writeMessage("Всего доброго :)");
-            }
-            else
-                ConsoleWriter.writeMessage(">>Выбрана некорректная команда");
-            ConsoleWriter.writeMessage("");
+        }catch (ServerNotAvailable e){
+            ConsoleWriter.writeMessage("Связь с сервером потеряна :( Попробуйте позже.");
         }
         ConsoleWriter.writeMessage("*** До свидания! ***");
     }
@@ -109,28 +116,24 @@ public class BankMachine{
     //
     // валидация
     //
-    private boolean validate(){
+    private boolean validate() throws ServerNotAvailable, IOException {
         ConsoleWriter.writeMessage("Введите PIN-код");
         String pin = null;
-        try {
-            pin = ConsoleWriter.getString();
-        } catch (IOException e) {
-            ConsoleWriter.writeMessage(">>Ошибка ввода");
-        }
+        pin = ConsoleWriter.getString();
         return connector.checkPin(client.getCard().getNumber(), pin);
     }
 
     //
     // доступные операции
     //
-    private double getBalance(){
+    private double getBalance() throws ServerNotAvailable {
         return connector.getBalance();
     }
 
-    private Map<Integer, Integer> getMoney(int amount){
+    private Map<Integer, Integer> getMoney(int amount) throws ServerNotAvailable {
         boolean success = connector.withdrawalBalance((double) amount);
         if(!success) {
-            ConsoleWriter.writeMessage("Операция не выполнена");
+            ConsoleWriter.writeMessage(">>Недостаточно средств");
             return null;
         }
         Map<Integer, Integer> cash = null;
@@ -150,7 +153,7 @@ public class BankMachine{
     }
 
 
-    private boolean insertMoney(Map<Integer, Integer> money){
+    private boolean insertMoney(Map<Integer, Integer> money) throws ServerNotAvailable {
         if(money == null || money.size() == 0) return false;
         try {
             tank.checkValid(money);
@@ -171,15 +174,14 @@ public class BankMachine{
             double cost = connector.getBillCost(bill);
             if(cost == 0) throw  new NumberDoesNotExist();
             ConsoleWriter.writeMessage("Ваша задолжность составляет: " + cost + " рублей.");
-            ConsoleWriter.writeMessage("Введите сумму дял оплаты. '*' для оплаты целиком");
+            ConsoleWriter.writeMessage("Введите сумму для оплаты. '*' для оплаты целиком");
             String amount = ConsoleWriter.getString();
-            if(amount.contains("*"))
-                connector.payBill(bill, cost);
+            if(amount.contains("*") || Double.parseDouble(amount) > cost)
+                return connector.payBill(bill, cost);
             else
-                connector.payBill(bill, Double.parseDouble(amount));
-        } catch (IOException e) {
+                return connector.payBill(bill, Double.parseDouble(amount));
+        } catch (ServerNotAvailable | IOException e) {
             return false;
         }
-        return true;
     }
 }

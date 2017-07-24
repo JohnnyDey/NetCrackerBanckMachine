@@ -1,7 +1,6 @@
 package Java.Connection;
 
 import java.io.Serializable;
-import java.util.Map;
 
 public class Message implements Serializable {
     private MessageType type;

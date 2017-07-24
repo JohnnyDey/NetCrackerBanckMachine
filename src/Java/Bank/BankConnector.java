@@ -22,27 +22,27 @@ public class BankConnector {
 
     public void start() throws IOException {
         try (ServerSocket ss = new ServerSocket(1025)) {
-            ConsoleWriter.writeMessage("**Сервер запущен.**");
+            ConsoleWriter.writeMessage("**Сервер запущен**");
             while (true) {
                 Socket socket = ss.accept();
                 ConsoleWriter.writeMessage("**Новое соединение!**");
                 Handler handler = new Handler(socket);
                 handler.start();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            ConsoleWriter.writeMessage(">>Ошибка запуска сервера!");
         }
     }
 
     public static void sendMessage(Message message) {
             try {
                 connection.send(message);
-                System.out.println("**Ответ для отправлен**");
+                System.out.println("**Ответ для " + connection.getRemoteSocketAddress() + " отправлен**");
             }
             catch (IOException e) {
-                System.out.println(">>Ответ не был отправлен");
+                System.out.println(">>Ответ для " + connection.getRemoteSocketAddress() + " не был отправлен");
             }
+    }
+    public void clos() throws IOException {
+        connection.close();
     }
 
     private static class Handler extends Thread {
@@ -51,7 +51,7 @@ public class BankConnector {
             this.socket = socket;
         }
 
-        private void serverMainLoop(Connection connection) throws IOException, ClassNotFoundException, NotEnoughCash {
+        private void serverMainLoop(Connection connection) throws IOException, ClassNotFoundException {
             while (true) {
                 Message message = connection.receive();
                 System.out.println(message.getType());
@@ -88,7 +88,7 @@ public class BankConnector {
                         try {
                             bank.withdrawalBalance((Double) message.getData());
                             sendMessage(new Message(MessageType.STATUS, true));
-                        } catch (SQLException e) {
+                        } catch (NotEnoughCash | SQLException e) {
                             sendMessage(new Message(MessageType.STATUS, false));
                         }
                         break;
@@ -96,7 +96,7 @@ public class BankConnector {
                         try {
                             bank.payBill((String)message.getData(), (double)message.getAdditional());
                             sendMessage(new Message(MessageType.STATUS, true));
-                        } catch (SQLException e) {
+                        } catch (NotEnoughCash | SQLException e) {
                             sendMessage(new Message(MessageType.STATUS, false));
                         }
                         break;
@@ -125,9 +125,6 @@ public class BankConnector {
             }
             catch (IOException | ClassNotFoundException e) {
                 ConsoleWriter.writeMessage(">>Произошла ошибка при обмене данными с удаленным адресом: " + address);
-            }
-            catch (NotEnoughCash notEnoughCash) {
-                ConsoleWriter.writeMessage(">>Не достаточно средств на счете");
             }
             ConsoleWriter.writeMessage("Закрыто соединение с удаленным адресом: " + address);
         }

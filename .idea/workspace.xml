@@ -2,36 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd7cd742-4748-4ea5-bcb9-3e286b0392bd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Java/BankMachine/Command.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Java/ConsoleWriter.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Read me.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/Bank.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/BankMachine$Tank.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/BankMachine.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/Collector.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/Command.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/Connection/BankConnector$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/Connection/BankConnector$Handler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/Connection/BankConnector.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/Connection/BankMachineConnector$SocketThread.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/Connection/BankMachineConnector.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/Util/ConsoleWriter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/Util/DataAccess.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Java/Collector.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Java/Command.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Java/Util/ConsoleWriter.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Java/Bank.java" afterPath="$PROJECT_DIR$/src/Java/Bank/Bank.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Java/BankMachine.java" afterPath="$PROJECT_DIR$/src/Java/BankMachine/BankMachine.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Java/Connection/BankConnector.java" afterPath="$PROJECT_DIR$/src/Java/Bank/BankConnector.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Java/Connection/BankMachineConnector.java" afterPath="$PROJECT_DIR$/src/Java/BankMachine/BankMachineConnector.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Java/Util/DataAccess.java" afterPath="$PROJECT_DIR$/src/Java/DataAccess.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/Client/Client.class" afterPath="$PROJECT_DIR$/out/production/BanckMachine/Java/Client/Client.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/DataAccess.class" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Read Me.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Java/DataAccess.java" afterPath="$PROJECT_DIR$/src/Java/Bank/DataAccess.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/Bank/Bank.class" afterPath="$PROJECT_DIR$/out/production/BanckMachine/Java/Bank/Bank.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/Bank/BankConnector$1.class" afterPath="$PROJECT_DIR$/out/production/BanckMachine/Java/Bank/BankConnector$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/Bank/BankConnector$Handler.class" afterPath="$PROJECT_DIR$/out/production/BanckMachine/Java/Bank/BankConnector$Handler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/Bank/BankConnector.class" afterPath="$PROJECT_DIR$/out/production/BanckMachine/Java/Bank/BankConnector.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/BankMachine/BankMachine.class" afterPath="$PROJECT_DIR$/out/production/BanckMachine/Java/BankMachine/BankMachine.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/BankMachine/BankMachineConnector$SocketThread.class" afterPath="$PROJECT_DIR$/out/production/BanckMachine/Java/BankMachine/BankMachineConnector$SocketThread.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/BankMachine/BankMachineConnector.class" afterPath="$PROJECT_DIR$/out/production/BanckMachine/Java/BankMachine/BankMachineConnector.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BanckMachine/Java/Main.class" afterPath="$PROJECT_DIR$/out/production/BanckMachine/Java/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/415681b0-279c-48cc-8e2c-e4d89e450240.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/415681b0-279c-48cc-8e2c-e4d89e450240.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Java/Client/Client.java" afterPath="$PROJECT_DIR$/src/Java/Client/Client.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BanckMachine/banknotes" afterPath="$PROJECT_DIR$/out/production/BanckMachine/banknotes" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Java/Bank/Bank.java" afterPath="$PROJECT_DIR$/src/Java/Bank/Bank.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Java/Bank/BankConnector.java" afterPath="$PROJECT_DIR$/src/Java/Bank/BankConnector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Java/BankMachine/BankMachine.java" afterPath="$PROJECT_DIR$/src/Java/BankMachine/BankMachine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Java/BankMachine/BankMachineConnector.java" afterPath="$PROJECT_DIR$/src/Java/BankMachine/BankMachineConnector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Java/BankMachine/Tank.java" afterPath="$PROJECT_DIR$/src/Java/BankMachine/Tank.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Java/Connection/Message.java" afterPath="$PROJECT_DIR$/src/Java/Connection/Message.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Java/ConsoleWriter.java" afterPath="$PROJECT_DIR$/src/Java/ConsoleWriter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Java/Main.java" afterPath="$PROJECT_DIR$/src/Java/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/banknotes" afterPath="$PROJECT_DIR$/src/banknotes" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,17 +44,7 @@
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <expand>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="@localhost" type="e3449647:DbNodeDescriptor" />
-      </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="@localhost" type="e3449647:DbNodeDescriptor" />
-        <item name="bank" type="e3449647:DbNodeDescriptor" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="FavoritesManager">
@@ -76,8 +58,8 @@
       <list>
         <option value="Interface" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="XSLT Stylesheet" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -95,6 +77,8 @@
       <find>check</find>
       <find>pin</find>
       <find>getBillCost</find>
+      <find>IO</find>
+      <find>IOEx</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -108,9 +92,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Exeptions/CannotDecpenceBanknote.java" />
-        <option value="$PROJECT_DIR$/src/Bank.java" />
-        <option value="$PROJECT_DIR$/src/Exeptions/IncorrectBanknote.java" />
         <option value="$PROJECT_DIR$/src/Incaserator.java" />
         <option value="$PROJECT_DIR$/src/Client.java" />
         <option value="$PROJECT_DIR$/src/Client/CreditCard.java" />
@@ -131,8 +112,6 @@
         <option value="$PROJECT_DIR$/src/Java/Util/BankMachineConnector.java" />
         <option value="$PROJECT_DIR$/src/Java/Util/MessageType.java" />
         <option value="$PROJECT_DIR$/src/Java/Util/BankConnector.java" />
-        <option value="$PROJECT_DIR$/src/Java/Connection/Connection.java" />
-        <option value="$PROJECT_DIR$/src/Java/Connection/Message.java" />
         <option value="$PROJECT_DIR$/src/Java/Connection/MessageType.java" />
         <option value="$PROJECT_DIR$/src/Java/Util/DataAccess.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/415681b0-279c-48cc-8e2c-e4d89e450240/console_1.sql" />
@@ -142,23 +121,28 @@
         <option value="$PROJECT_DIR$/src/Java/Connection/BankConnector.java" />
         <option value="$PROJECT_DIR$/src/Java/Exeptions/NumberDoesNotExist.java" />
         <option value="$PROJECT_DIR$/src/Java/Bank.java" />
-        <option value="$PROJECT_DIR$/src/Java/Main.java" />
         <option value="$PROJECT_DIR$/src/Java/Connection/BankMachineConnector.java" />
         <option value="$PROJECT_DIR$/src/Java/BankMachine.java" />
         <option value="$PROJECT_DIR$/src/Java/Util/ConsoleWriter.java" />
-        <option value="$PROJECT_DIR$/src/Java/Bank/Bank.java" />
-        <option value="$PROJECT_DIR$/src/Java/Bank/BankConnector.java" />
         <option value="$PROJECT_DIR$/src/Java/BankMachine/Command.java" />
         <option value="$PROJECT_DIR$/src/banknotes.txt" />
-        <option value="$PROJECT_DIR$/src/Java/BankMachine/BankMachine.java" />
         <option value="$PROJECT_DIR$/src/Java/Client/Client.java" />
-        <option value="$PROJECT_DIR$/src/Java/BankMachine/Tank.java" />
-        <option value="$PROJECT_DIR$/src/banknotes" />
-        <option value="$PROJECT_DIR$/src/Java/BankMachine/BankMachineConnector.java" />
-        <option value="$PROJECT_DIR$/src/Java/DataAccess.java" />
         <option value="$PROJECT_DIR$/RM.rd" />
         <option value="$PROJECT_DIR$/12" />
         <option value="$PROJECT_DIR$/Read me.txt" />
+        <option value="$PROJECT_DIR$/src/Java/Exeptions/ServerNotAvailable.java" />
+        <option value="$PROJECT_DIR$/src/Java/DataAccess.java" />
+        <option value="$PROJECT_DIR$/src/Java/Bank/DataAccess.java" />
+        <option value="$PROJECT_DIR$/src/Java/BankMachine/BankMachine.java" />
+        <option value="$PROJECT_DIR$/src/Java/ConsoleWriter.java" />
+        <option value="$PROJECT_DIR$/src/Java/Bank/Bank.java" />
+        <option value="$PROJECT_DIR$/src/Java/BankMachine/BankMachineConnector.java" />
+        <option value="$PROJECT_DIR$/src/Java/BankMachine/Tank.java" />
+        <option value="$PROJECT_DIR$/src/Java/Connection/Message.java" />
+        <option value="$PROJECT_DIR$/src/Java/Connection/Connection.java" />
+        <option value="$PROJECT_DIR$/src/Java/Bank/BankConnector.java" />
+        <option value="$PROJECT_DIR$/src/Java/Main.java" />
+        <option value="$PROJECT_DIR$/src/banknotes" />
       </list>
     </option>
   </component>
@@ -168,11 +152,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="373" />
-    <option name="y" value="219" />
-    <option name="width" value="1547" />
-    <option name="height" value="861" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="195" />
+    <option name="y" value="105" />
+    <option name="width" value="1634" />
+    <option name="height" value="951" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -192,7 +176,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -206,23 +191,28 @@
               <item name="NetCrackerBankMachine" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="NetCrackerBankMachine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NetCrackerBankMachine" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Java" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JavaRush" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="application.passwordSafe" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -711,12 +701,14 @@
       <workItem from="1500526514391" duration="427000" />
       <workItem from="1500526979542" duration="295000" />
       <workItem from="1500527841389" duration="11174000" />
-      <workItem from="1500540255043" duration="8053000" />
+      <workItem from="1500540255043" duration="8532000" />
+      <workItem from="1500549790050" duration="51000" />
+      <workItem from="1500874028854" duration="8728000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94163000" />
+    <option name="totallyTimeSpent" value="103421000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -728,7 +720,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="373" y="219" width="1547" height="861" extended-state="0" />
+    <frame x="0" y="30" width="1920" height="1050" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -738,19 +730,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27494693" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41434264" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14738204" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17000647" sideWeight="0.48412699" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13697916" sideWeight="0.48412699" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39739028" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39784947" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -771,7 +763,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <option name="time" value="20" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -780,19 +772,15 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="dbDummy://dbtable:/7cec923/415681b0-279c-48cc-8e2c-e4d89e450240/bank.accounts" />
     <entry file="dbDummy://dbtable:/7cec923/415681b0-279c-48cc-8e2c-e4d89e450240/bank.bill" />
     <entry file="file://$PROJECT_DIR$/src/Java/Bank/Bank.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Java/DataAccess.java">
+    <entry file="file://$PROJECT_DIR$/src/Java/Bank/DataAccess.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
@@ -806,7 +794,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Java/DataAccess.java">
+    <entry file="file://$PROJECT_DIR$/src/Java/Bank/DataAccess.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="52" lean-forward="false" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
@@ -891,28 +879,6 @@
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Integer.java" />
     <entry file="dbDummy://dbtable:/7cec923/415681b0-279c-48cc-8e2c-e4d89e450240/bank.cards" />
     <entry file="file://$PROJECT_DIR$/src/Java/Collector.java" />
-    <entry file="file://$PROJECT_DIR$/src/Java/Client/CreditCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Java/Connection/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" column="36" lean-forward="false" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Java/Connection/MessageType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/415681b0-279c-48cc-8e2c-e4d89e450240/console_1.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -934,14 +900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Java/Connection/Connection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Java/Exeptions/NumberDoesNotExist.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -949,14 +907,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/4d3fb508/415681b0-279c-48cc-8e2c-e4d89e450240/bank.bill">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+    <entry file="file://$PROJECT_DIR$/4.xsl" />
+    <entry file="file://$PROJECT_DIR$/RM.rd" />
+    <entry file="file://$PROJECT_DIR$/src/Read me.txt" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="135">
+            <caret line="9" column="10" lean-forward="false" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/4d3fb508/415681b0-279c-48cc-8e2c-e4d89e450240/bank.accounts">
+    <entry file="file://$PROJECT_DIR$/Read me.txt" />
+    <entry file="file://$PROJECT_DIR$/src/Java/Exeptions/ServerNotAvailable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="49" lean-forward="false" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/4d3fb508/415681b0-279c-48cc-8e2c-e4d89e450240/bank.bill">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -970,18 +948,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Java/Bank/BankConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
+    <entry file="das://table:/4d3fb508/415681b0-279c-48cc-8e2c-e4d89e450240/bank.accounts">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Java/ConsoleWriter.java">
+    <entry file="file://$PROJECT_DIR$/src/Java/Connection/Message.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="30">
+          <caret line="2" column="28" lean-forward="false" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+          <folding>
+            <element signature="e#350#351#0" expanded="false" />
+            <element signature="e#394#395#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Java/Bank/DataAccess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+          <folding>
+            <marker date="1500879749994" expanded="true" signature="1074:1215" ph="UPDATE bank.... " />
+            <marker date="1500879749994" expanded="true" signature="1514:1655" ph="UPDATE bank.... " />
+            <marker date="1500879749994" expanded="true" signature="2340:2389" ph="SELECT valid... cards" />
+            <marker date="1500879749994" expanded="true" signature="2633:2667" ph="SELECT * FRO... cards" />
+            <marker date="1500879749994" expanded="true" signature="2951:3027" ph="UPDATE bank.... " />
+            <marker date="1500879749994" expanded="true" signature="3555:3591" ph="DELETE FROM " />
+            <marker date="1500879749994" expanded="true" signature="3836:3900" ph="UPDATE bank.... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Java/BankMachine/BankMachine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -994,62 +998,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Java/BankMachine/BankMachine.java">
+    <entry file="file://$PROJECT_DIR$/src/Java/BankMachine/Tank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Java/Client/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="8" column="53" lean-forward="false" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Java/DataAccess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1223">
-          <caret line="36" column="65" lean-forward="true" selection-start-line="36" selection-start-column="65" selection-end-line="36" selection-end-column="65" />
-          <folding>
-            <marker date="1500544849655" expanded="true" signature="1076:1217" ph="UPDATE bank.... " />
-            <marker date="1500544849655" expanded="true" signature="1479:1620" ph="UPDATE bank.... " />
-            <marker date="1500544849655" expanded="true" signature="2305:2354" ph="SELECT valid... cards" />
-            <marker date="1500544849655" expanded="true" signature="2598:2632" ph="SELECT * FRO... cards" />
-            <marker date="1500544849655" expanded="true" signature="2916:2992" ph="UPDATE bank.... " />
-            <marker date="1500544849655" expanded="true" signature="3520:3556" ph="DELETE FROM " />
-            <marker date="1500544849655" expanded="true" signature="3801:3865" ph="UPDATE bank.... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/banknotes">
+    <entry file="file://$PROJECT_DIR$/src/Java/Client/CreditCard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Java/BankMachine/Tank.java">
+    <entry file="file://$PROJECT_DIR$/src/Java/BankMachine/BankMachineConnector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-638">
-          <caret line="26" column="57" lean-forward="false" selection-start-line="26" selection-start-column="57" selection-end-line="26" selection-end-column="57" />
+        <state relative-caret-position="408">
+          <caret line="128" column="42" lean-forward="false" selection-start-line="128" selection-start-column="42" selection-end-line="128" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
@@ -1058,67 +1036,63 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Java/Bank/Bank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="-477">
+          <caret line="30" column="65" lean-forward="false" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Java/BankMachine/BankMachineConnector.java">
+    <entry file="file://$PROJECT_DIR$/src/Java/Bank/BankConnector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        <state relative-caret-position="-822">
+          <caret line="40" column="90" lean-forward="false" selection-start-line="40" selection-start-column="90" selection-end-line="40" selection-end-column="90" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/4.xsl">
+    <entry file="file://$PROJECT_DIR$/src/Java/Connection/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="405">
+          <caret line="32" column="13" lean-forward="true" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+          <folding>
+            <element signature="e#940#941#0" expanded="false" />
+            <element signature="e#994#995#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Java/Connection/MessageType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RM.rd">
+    <entry file="file://$PROJECT_DIR$/src/Java/ConsoleWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="4" lean-forward="true" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+        <state relative-caret-position="360">
+          <caret line="28" column="73" lean-forward="false" selection-start-line="28" selection-start-column="73" selection-end-line="28" selection-end-column="73" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Read me.txt">
+    <entry file="file://$PROJECT_DIR$/src/Java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="135">
+          <caret line="9" column="86" lean-forward="false" selection-start-line="9" selection-start-column="86" selection-end-line="9" selection-end-column="86" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Read Me.md">
-      <provider editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="135">
-            <caret line="9" column="10" lean-forward="false" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/banknotes">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Read me.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="45">
+          <caret line="3" column="8" lean-forward="false" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
           <folding />
         </state>
       </provider>

@@ -71,7 +71,7 @@ class Tank {
                 available.add(i1);
             }
         } catch (IOException e) {
-            ConsoleWriter.writeMessage("Ошибка чтения файла");
+            ConsoleWriter.writeMessage(">>Ошибка чтения файла");
         }
         Collections.sort(available);
     }
@@ -84,7 +84,7 @@ class Tank {
             }
             writer.flush();
         } catch (IOException e) {
-            ConsoleWriter.writeMessage("Ошибка записи в файл");
+            ConsoleWriter.writeMessage(">>Ошибка записи в файл");
         }
     }
 }
