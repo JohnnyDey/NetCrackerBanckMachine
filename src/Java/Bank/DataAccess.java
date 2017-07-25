@@ -15,9 +15,7 @@ class DataAccess {
     private static ResultSet rs;
 
 
-    //
-    //формирование SQL-запроса
-    //
+    /** формирование SQL-запроса */
     public String getPinBySerial(String serial) throws SQLException {
         return exeQuery("SELECT pin FROM bank.cards WHERE id=" + serial);
     }
@@ -105,9 +103,8 @@ class DataAccess {
     }
 
 
-    //
-    //  округление до двух чисел после запятой
-    //
+
+    /** округление до двух чисел после запятой */
     private static double round(double value) {
         long factor = (long) Math.pow(10, 2);
         value = value * factor;
@@ -115,9 +112,8 @@ class DataAccess {
         return (double) tmp / factor;
     }
 
-    //
-    // открытие/закрытие
-    //
+
+    /** открытие/закрытие */
     public void open(){
         try {
             con = DriverManager.getConnection(url, user, password);

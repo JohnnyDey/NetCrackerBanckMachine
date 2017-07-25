@@ -1,9 +1,8 @@
 package Java.Bank;
-/*
-
-Банк! Без его запуска банкомат услуги не предоставляет
-
-*/
+/**
+ * Банк! Он же сервер.
+ * Без его запуска банкомат услуги не предоставляет
+ **/
 
 import Java.Exeptions.NotEnoughCash;
 import Java.ConsoleWriter;
@@ -36,9 +35,7 @@ public class Bank  {
         this.serial = serial;
     }
 
-    //
-    //  запросы в базу
-    //
+    /**  запросы в базу */
     public boolean checkValid(String pin) throws SQLException {
         if(!checkExistence() || !checkPin(pin) || !checkDate()) return false;
         return true;
@@ -74,9 +71,7 @@ public class Bank  {
         connector.clos();
     }
 
-    //
-    //  шифрование
-    //
+    /**  шифрование */
     public static String hash(String st) {
         MessageDigest messageDigest = null;
         byte[] digest = new byte[0];

@@ -22,9 +22,7 @@ public class BankMachine{
         }
     }
 
-    //
-    //  приветствие
-    //
+    /** приветствие */
     private void greetings() throws ServerNotAvailable {
         connector.start();
         try {
@@ -44,9 +42,8 @@ public class BankMachine{
         connector.close();
     }
 
-    //
-    //  меню
-    //
+
+    /** меню */
     private void menu() throws IOException {
         Integer integer = 0;
         try {
@@ -113,9 +110,7 @@ public class BankMachine{
     }
 
 
-    //
-    // валидация
-    //
+    /** валидация */
     private boolean validate() throws ServerNotAvailable, IOException {
         ConsoleWriter.writeMessage("Введите PIN-код");
         String pin = null;
@@ -123,9 +118,7 @@ public class BankMachine{
         return connector.checkPin(client.getCard().getNumber(), pin);
     }
 
-    //
-    // доступные операции
-    //
+    /** доступные операции */
     private double getBalance() throws ServerNotAvailable {
         return connector.getBalance();
     }

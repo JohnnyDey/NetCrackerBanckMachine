@@ -17,9 +17,7 @@ public class BankMachineConnector extends Thread{
     private boolean unread = false;
 
 
-    //
-    //  запрос данных от сервера
-    //
+    /**  запрос данных от сервера */
     public boolean checkPin(String serial, String pin) throws ServerNotAvailable {
         newSerialMessage(serial);
         waitForResponse();
@@ -67,9 +65,7 @@ public class BankMachineConnector extends Thread{
         this.message = message;
     }
 
-    //
-    //  формирование сообщения
-    //
+    /**  формирование сообщения */
     private void newSerialMessage(String serial){
         this.message = new Message(MessageType.SERIAL, serial);
     }
@@ -89,9 +85,7 @@ public class BankMachineConnector extends Thread{
         this.message = new Message(MessageType.BILL_COST, bill);
     }
 
-    //
-    //  обмен сообщениями
-    //
+    /**  обмен сообщениями */
     private void waitForResponse() throws ServerNotAvailable {
         while (!unread){
             if(!clientConnected) throw new ServerNotAvailable();
@@ -113,9 +107,7 @@ public class BankMachineConnector extends Thread{
         }
     }
 
-    //
-    //  запуск коннектора
-    //
+    /**  запуск коннектора */
     public void run() {
         SocketThread socketThread = new SocketThread();
         socketThread.setDaemon(true);
